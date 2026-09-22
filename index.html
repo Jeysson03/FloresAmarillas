@@ -1,0 +1,353 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 🌻</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: Georgia, serif;
+  background: linear-gradient(
+    180deg,
+    #111827 0%,
+    #25345b 45%,
+    #6b587b 75%,
+    #d99b72 100%
+  );
+  color: white;
+}
+
+/* Luna */
+.luna {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff8d6;
+  top: 60px;
+  right: 12%;
+  box-shadow: 0 0 35px #fff2a8;
+}
+
+/* Estrellas */
+.estrellas {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, white 1px, transparent 2px),
+    radial-gradient(circle, #ffeaa0 1px, transparent 2px);
+  background-size: 80px 80px, 120px 120px;
+  animation: estrellas 5s ease-in-out infinite alternate;
+}
+
+@keyframes estrellas {
+  from { opacity: .4; }
+  to { opacity: 1; }
+}
+
+/* Mensaje */
+.mensaje {
+  position: absolute;
+  top: 9%;
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+  padding: 20px;
+  animation: aparecer 2s ease forwards;
+}
+
+.mensaje h1 {
+  font-size: clamp(30px, 8vw, 55px);
+  color: #ffe16b;
+  text-shadow: 0 0 15px #ffc400;
+  margin-bottom: 15px;
+}
+
+.mensaje p {
+  font-size: clamp(17px, 4vw, 23px);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: auto;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Suelo */
+.suelo {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 27%;
+  background: linear-gradient(#315d2a, #172f18);
+}
+
+/* Flores */
+.flor {
+  position: absolute;
+  bottom: 20%;
+  width: 7px;
+  height: 190px;
+  background: linear-gradient(to right, #285d26, #4d9b38);
+  border-radius: 10px;
+  transform-origin: bottom;
+  animation: viento 4s ease-in-out infinite alternate;
+}
+
+/* Cabeza de la flor */
+.flor::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  left: 50%;
+  top: -55px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at 50% 5%, #ffd92f 0 20%, transparent 21%),
+    radial-gradient(circle at 90% 30%, #ffd92f 0 20%, transparent 21%),
+    radial-gradient(circle at 75% 85%, #ffd92f 0 20%, transparent 21%),
+    radial-gradient(circle at 25% 85%, #ffd92f 0 20%, transparent 21%),
+    radial-gradient(circle at 10% 30%, #ffd92f 0 20%, transparent 21%);
+    
+  filter: drop-shadow(0 0 10px #ffc400);
+}
+
+/* Centro */
+.flor::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  top: -25px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, #6b3d00, #321c00);
+  box-shadow: 0 0 8px #7b4b00;
+}
+
+@keyframes viento {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(4deg); }
+}
+
+/* Posiciones */
+.f1 {
+  left: 10%;
+  height: 150px;
+  animation-delay: .2s;
+}
+
+.f2 {
+  left: 27%;
+  height: 210px;
+  animation-delay: .8s;
+}
+
+.f3 {
+  left: 48%;
+  height: 175px;
+  animation-delay: .4s;
+}
+
+.f4 {
+  left: 69%;
+  height: 220px;
+  animation-delay: 1s;
+}
+
+.f5 {
+  left: 88%;
+  height: 155px;
+  animation-delay: 1.4s;
+}
+
+/* Pétalos */
+.petalo {
+  position: absolute;
+  top: -50px;
+  width: 12px;
+  height: 18px;
+  background: #ffd83d;
+  border-radius: 100% 0 100% 0;
+  opacity: .8;
+  animation: caer linear infinite;
+}
+
+@keyframes caer {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: .9;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Botón */
+.boton {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 30px;
+  background: #ffd43b;
+  color: #493300;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,210,50,.6);
+  transition: .3s;
+}
+
+.boton:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
+/* Mensaje secreto */
+.secreto {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 30, .92);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 100;
+  padding: 30px;
+}
+
+.carta {
+  max-width: 600px;
+  animation: aparecer 1s ease;
+}
+
+.carta h2 {
+  color: #ffd83d;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.carta p {
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.cerrar {
+  margin-top: 25px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="estrellas"></div>
+<div class="luna"></div>
+
+<!-- MENSAJE PRINCIPAL -->
+<div class="mensaje">
+  <h1>🌻 Para ti 🌻</h1>
+
+  <p>
+    No entiendo lo de flores amarillas pero
+    Conmigo nunca vas a ser espectadora
+  </p>
+</div>
+
+<!-- FLORES -->
+<div class="flor f1"></div>
+<div class="flor f2"></div>
+<div class="flor f3"></div>
+<div class="flor f4"></div>
+<div class="flor f5"></div>
+
+<!-- SUELO -->
+<div class="suelo"></div>
+
+<!-- PÉTALOS -->
+<div class="petalo" style="left:5%; animation-duration:7s;"></div>
+<div class="petalo" style="left:15%; animation-duration:9s; animation-delay:2s;"></div>
+<div class="petalo" style="left:30%; animation-duration:6s; animation-delay:1s;"></div>
+<div class="petalo" style="left:45%; animation-duration:8s; animation-delay:3s;"></div>
+<div class="petalo" style="left:60%; animation-duration:7s; animation-delay:1.5s;"></div>
+<div class="petalo" style="left:75%; animation-duration:10s; animation-delay:2s;"></div>
+<div class="petalo" style="left:90%; animation-duration:6s; animation-delay:4s;"></div>
+
+<!-- BOTÓN -->
+<button class="boton" onclick="abrirCarta()">
+  💛 Tengo algo para ti
+</button>
+
+<!-- CARTA -->
+<div class="secreto" id="carta">
+
+  <div class="carta">
+
+    <h2>🌻 Una pequeña sorpresa 🌻</h2>
+
+    <p>
+      Solo quería regalarte algo diferente.
+      <br><br>
+      No son flores que se marchiten,
+      pero sí espero que te saquen una sonrisa. 💛
+      <br><br>
+      Perdon por lo intenso, pero se que te va a gustar.
+    </p>
+
+    <button class="cerrar" onclick="cerrarCarta()">
+      Volver a las flores 🌻
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+function abrirCarta() {
+  document.getElementById("carta").style.display = "flex";
+}
+
+function cerrarCarta() {
+  document.getElementById("carta").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
+```
